@@ -14,6 +14,10 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
   ],
   css: ['@/assets/css/tailwind.css'],
+  colorMode: {
+    preference: 'dark',
+    fallback: 'dark',
+  },
   runtimeConfig: {
     siteToken: process.env.NUXT_SITE_TOKEN || randomBytes(32).toString('base64url'),
     cfAccessTeamDomain: '',
@@ -146,13 +150,9 @@ export default defineNuxtConfig({
       escapeHtml: true,
     },
     strategy: 'no_prefix',
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'sink_i18n_redirected',
-      redirectOn: 'root',
-    },
+    detectBrowserLanguage: false,
     baseUrl: '/',
-    defaultLocale: 'en-US',
+    defaultLocale: 'pt-BR',
   },
   shadcn: {
     prefix: '',

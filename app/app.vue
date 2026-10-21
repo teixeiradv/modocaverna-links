@@ -4,10 +4,9 @@ import 'vue-sonner/style.css'
 const { title, description, image } = useAppConfig()
 const route = useRoute()
 const localeHead = useLocaleHead()
-const colorMode = useColorMode()
 
 useSeoMeta({
-  title: `${title} - Link Shortener with Analytics`,
+  title,
   description,
   ogType: 'website',
   ogTitle: title,
@@ -29,13 +28,22 @@ useHead(() => ({
     },
     {
       name: 'theme-color',
-      content: colorMode.value === 'dark' ? '#09090b' : '#ffffff',
+      content: '#0b0b0c',
     },
   ],
   link: [
     {
       rel: 'canonical',
-      href: computed(() => `https://sink.cool${route.path}`),
+      href: computed(() => `https://linkmc.modocaverna.com${route.path}`),
+    },
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.gstatic.com',
+      crossorigin: '',
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap',
     },
     {
       rel: 'icon',

@@ -58,20 +58,20 @@ const settingsItems = computed<NavItem[]>(() => [
               <div
                 class="
                   flex aspect-square size-8 items-center justify-center
-                  rounded-full
+                  rounded-lg bg-black
                 "
               >
                 <img
-                  src="/sink.png"
+                  src="/mc-icon.png"
                   alt=""
                   width="32"
                   height="32"
-                  class="size-8 rounded-full"
+                  class="size-7"
                 >
               </div>
               <div class="grid flex-1 text-left text-sm/tight">
-                <span class="truncate font-medium">{{ title }}</span>
-                <span class="truncate text-xs">{{ $t('sidebar.subtitle') }}</span>
+                <span class="font-display truncate text-lg leading-none">{{ title }}</span>
+                <span class="truncate text-xs text-muted-foreground">linkmc.modocaverna.com</span>
               </div>
             </NuxtLink>
           </SidebarMenuButton>

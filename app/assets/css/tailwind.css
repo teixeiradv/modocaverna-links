@@ -42,8 +42,54 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-sans: 'IBM Plex Sans', sans-serif;
+  --font-sans: 'Inter', 'IBM Plex Sans', sans-serif;
   --font-heading: var(--font-sans);
+}
+
+/* Modo Caverna brand: always dark, cave black + logo red */
+:root:root {
+  color-scheme: dark;
+  --radius: 0.75rem;
+  --mc-red: #ea1b2d;
+  --mc-red-dark: #9f1220;
+  --background: #0b0b0c;
+  --foreground: #f4f4f5;
+  --card: #141416;
+  --card-foreground: #f4f4f5;
+  --popover: #141416;
+  --popover-foreground: #f4f4f5;
+  --primary: var(--mc-red);
+  --primary-foreground: #ffffff;
+  --secondary: #1f1f22;
+  --secondary-foreground: #f4f4f5;
+  --muted: #1f1f22;
+  --muted-foreground: #a1a1aa;
+  --accent: #26262a;
+  --accent-foreground: #f4f4f5;
+  --success: oklch(0.72 0.17 145);
+  --success-foreground: oklch(0.18 0.04 145);
+  --destructive: #ff4d5e;
+  --border: rgb(255 255 255 / 9%);
+  --input: rgb(255 255 255 / 14%);
+  --ring: var(--mc-red);
+  --chart-1: #ea1b2d;
+  --chart-2: #ff6b5a;
+  --chart-3: #c2410c;
+  --chart-4: #9f1220;
+  --chart-5: #71717a;
+  --sidebar: #0f0f11;
+  --sidebar-foreground: #f4f4f5;
+  --sidebar-primary: var(--mc-red);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1f1f22;
+  --sidebar-accent-foreground: #f4f4f5;
+  --sidebar-border: rgb(255 255 255 / 8%);
+  --sidebar-ring: var(--mc-red);
+}
+
+.font-display {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  letter-spacing: 0.02em;
 }
 
 :root {
