@@ -32,13 +32,33 @@ describe('useWAE', () => {
   it.each([
     { cfAccountId: '', cfApiToken: 'token' },
     { cfAccountId: 'account', cfApiToken: '' },
-  ])('returns empty data without requesting when credentials are incomplete', (config) => {
+  ])('reports missing credentials without requesting analytics', async (config) => {
     const fetchMock = vi.fn()
     vi.stubGlobal('useRuntimeConfig', () => config)
     vi.stubGlobal('$fetch', fetchMock)
 
-    expect(useWAE(event, query)).toEqual({ data: [] })
+    await expect(useWAE(event, query)).rejects.toMatchObject({ statusCode: 503 })
     expect(fetchMock).not.toHaveBeenCalled()
+  })
+
+  it('converts Cloudflare numeric strings for dashboard counters and metrics', async () => {
+    vi.stubGlobal('useRuntimeConfig', () => ({
+      cfAccountId: 'account',
+      cfApiToken: 'token',
+    }))
+    vi.stubGlobal('compileAnalyticsQuery', () => 'select * from sink')
+    vi.stubGlobal('$fetch', vi.fn().mockResolvedValue({
+      meta: [
+        { name: 'visits', type: 'UInt64' },
+        { name: 'count', type: 'UInt64' },
+        { name: 'name', type: 'String' },
+      ],
+      data: [{ visits: '3341', count: '0', name: '123' }],
+    }))
+
+    await expect(useWAE(event, query)).resolves.toMatchObject({
+      data: [{ visits: 3341, count: 0, name: '123' }],
+    })
   })
 
   it('preserves requests and propagates errors when credentials are complete', async () => {
